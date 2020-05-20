@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<div>count: {{count}}</div>
+		<button @click="add">Add</button>
 	</div>
 </template>
 
@@ -10,6 +11,11 @@
         computed: {
             count() {
                 return this.$store.state.count;
+            }
+        },
+        methods: {
+            add() {
+                this.$store.commit("add");
             }
         }
     }

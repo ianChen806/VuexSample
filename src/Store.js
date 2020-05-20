@@ -7,6 +7,11 @@ const store = new Store({
     state: {
         count: 0
     },
+    mutations: {
+        add(state) {
+            state.count++;
+        }
+    }
 });
 
 export default store;
