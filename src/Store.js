@@ -14,10 +14,13 @@ const store = new Store({
     },
     getters: {
         length(state, getters) {
-            return state.count + getters.test + 100;
+            return state.count + getters.test + getters.func(0) + 100;
         },
         test(state) {
             return state.count + 5;
+        },
+        func() {
+            return (value) => value + 50;
         }
     }
 });
