@@ -8,8 +8,8 @@ const store = new Store({
         count: 0
     },
     mutations: {
-        add(state) {
-            state.count++;
+        add(state, count) {
+            state.count += count;
         }
     }
 });
