@@ -24,10 +24,8 @@ const store = new Store({
         }
     },
     actions: {
-        cut(context) {
-            context.commit("add", {
-                count: -1
-            });
+        cut({commit}) {
+            commit("add", {count: -1});
         }
     }
 });
