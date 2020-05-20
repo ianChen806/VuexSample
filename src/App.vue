@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapState} from "vuex";
+    import {mapActions, mapGetters, mapState} from "vuex";
 
     export default {
         name: 'App',
@@ -28,11 +28,11 @@
                     count: 2
                 });
             },
+            ...mapActions({
+                cutAction: "cut"
+            }),
             cut() {
-                this.$store.dispatch({
-                    type: "cut",
-                    count: -2
-                });
+                this.cutAction({count: -2});
             }
         }
     }
