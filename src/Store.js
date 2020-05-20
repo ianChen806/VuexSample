@@ -13,8 +13,11 @@ const store = new Store({
         }
     },
     getters: {
-        length(state) {
-            return state.count + 100;
+        length(state, getters) {
+            return state.count + getters.test + 100;
+        },
+        test(state) {
+            return state.count + 5;
         }
     }
 });
