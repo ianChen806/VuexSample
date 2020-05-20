@@ -16,6 +16,11 @@ const myStore = {
         cut({commit, rootState}) {
             commit("add", rootState.count);
         }
+    },
+    getters: {
+        test({rootState}) {
+            return rootState.count;
+        }
     }
 }
 
