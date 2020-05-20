@@ -6,13 +6,13 @@
 </template>
 
 <script>
+    import {mapState} from "vuex";
+
     export default {
         name: 'App',
-        computed: {
-            count() {
-                return this.$store.state.count;
-            }
-        },
+        computed: mapState({
+            count: state => state.count,
+        }),
         methods: {
             add() {
                 this.$store.commit("add", 2);
