@@ -10,7 +10,9 @@
 
     export default {
         name: 'App',
-        computed: mapState(["count"]),
+        computed: {
+            ...mapState(["count"])
+        },
         methods: {
             add() {
                 this.$store.commit("add", 2);
