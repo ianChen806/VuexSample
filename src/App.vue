@@ -11,7 +11,9 @@
     export default {
         name: 'App',
         computed: {
-            ...mapState(["count"])
+            ...mapState({
+                count: 'count'
+            })
         },
         methods: {
             add() {
