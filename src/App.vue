@@ -2,6 +2,7 @@
 	<div id="app">
 		<div>count: {{count}}</div>
 		<button @click="add">Add</button>
+		<button @click="cut">Cut</button>
 		<div>{{length}}</div>
 	</div>
 </template>
@@ -26,6 +27,9 @@
                 this.$store.commit("add", {
                     count: 2
                 });
+            },
+            cut() {
+                this.$store.dispatch("cut");
             }
         }
     }

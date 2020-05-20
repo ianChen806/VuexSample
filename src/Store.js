@@ -22,6 +22,13 @@ const store = new Store({
         func() {
             return (value) => value + 50;
         }
+    },
+    actions: {
+        cut(context) {
+            context.commit("add", {
+                count: -1
+            });
+        }
     }
 });
 
