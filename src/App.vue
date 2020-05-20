@@ -29,7 +29,10 @@
                 });
             },
             cut() {
-                this.$store.dispatch("cut");
+                this.$store.dispatch({
+                    type: "cut",
+                    count: -2
+                });
             }
         }
     }

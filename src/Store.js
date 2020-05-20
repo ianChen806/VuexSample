@@ -24,8 +24,8 @@ const store = new Store({
         }
     },
     actions: {
-        cut({commit}) {
-            commit("add", {count: -1});
+        cut({commit}, payload) {
+            commit("add", {count: payload.count});
         }
     }
 });
