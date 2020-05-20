@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import {mapState} from "vuex";
+    import {mapGetters, mapState} from "vuex";
 
     export default {
         name: 'App',
@@ -15,9 +15,11 @@
             ...mapState({
                 count: 'count'
             }),
-            length() {
-                return this.$store.getters.length;
-            }
+            ...mapGetters({
+                length: 'length',
+                test: 'test',
+                func: 'func',
+            }),
         },
         methods: {
             add() {
