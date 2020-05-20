@@ -3,7 +3,26 @@ import Vue from "vue";
 
 Vue.use(Vuex);
 
+const myStore = {
+    state: {
+        myCount: 0
+    },
+    mutations: {
+        add(state, payload) {
+            state.myCount += payload;
+        }
+    },
+    actions: {
+        cut({commit, rootState}) {
+            commit("add", rootState.count);
+        }
+    }
+}
+
 const store = new Store({
+    modules: {
+        my: myStore
+    },
     state: {
         count: 0
     },
