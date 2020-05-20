@@ -11,6 +11,11 @@ const store = new Store({
         add(state, payload) {
             state.count += payload.count;
         }
+    },
+    getters: {
+        length(state) {
+            return state.count + 100;
+        }
     }
 });
 

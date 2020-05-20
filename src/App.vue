@@ -2,6 +2,7 @@
 	<div id="app">
 		<div>count: {{count}}</div>
 		<button @click="add">Add</button>
+		<div>{{length}}</div>
 	</div>
 </template>
 
@@ -14,6 +15,9 @@
             ...mapState({
                 count: 'count'
             }),
+            length() {
+                return this.$store.getters.length;
+            }
         },
         methods: {
             add() {
