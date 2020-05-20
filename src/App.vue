@@ -17,8 +17,7 @@
         },
         methods: {
             add() {
-                this.$store.commit({
-                    type: "add",
+                this.$store.commit("add", {
                     count: 2
                 });
             }
