@@ -1,12 +1,12 @@
 <template>
 	<div id="app">
 		<div>count: {{count}}</div>
-		<button @click="add(2)">Add</button>
+		<button @click="add">Add</button>
 	</div>
 </template>
 
 <script>
-    import {mapMutations, mapState} from "vuex";
+    import {mapState} from "vuex";
 
     export default {
         name: 'App',
@@ -16,9 +16,12 @@
             }),
         },
         methods: {
-            ...mapMutations({
-                add: 'add'
-            }),
+            add() {
+                this.$store.commit({
+                    type: "add",
+                    count: 2
+                });
+            }
         }
     }
 </script>
