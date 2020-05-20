@@ -13,7 +13,10 @@
         computed: {
             ...mapState({
                 count: 'count'
-            })
+            }),
+            test() {
+                return "";
+            }
         },
         methods: {
             add() {
