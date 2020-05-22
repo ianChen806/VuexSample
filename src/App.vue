@@ -14,27 +14,29 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
+    import {createNamespacedHelpers} from "vuex"
+
+    const {mapState, mapMutations, mapGetters, mapActions} = createNamespacedHelpers("my");
 
     export default {
         name: 'App',
         computed: {
             ...mapState({
-                count: state => state.my.count
+                count: state => state.count
             }),
-            ...mapGetters("my", {
+            ...mapGetters({
                 length: "length",
                 rootCount: "rootCount"
             }),
         },
         methods: {
-            ...mapMutations("my", {
+            addRoot(payload) {
+                this.$store.commit("add", payload);
+            },
+            ...mapMutations({
                 add: "add",
             }),
-            ...mapMutations({
-                addRoot: "add",
-            }),
-            ...mapActions("my", {
+            ...mapActions({
                 cut: "cut",
                 cutRoot: "cutRoot",
                 addTest: "addRoot"
