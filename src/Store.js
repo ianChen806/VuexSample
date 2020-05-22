@@ -16,7 +16,7 @@ const myStore = {
     },
     actions: {
         cut(context, payload) {
-            context.commit("add", payload.count);
+            context.commit("add", payload);
         },
         cutRoot(context) {
             context.commit("add", -context.rootState.rootCount);

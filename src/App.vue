@@ -1,50 +1,42 @@
 <template>
 	<div id="app">
 		<div>count: {{count}}</div>
-		<button @click="add">Add</button>
-		<button @click="cut">Cut</button>
+		<button @click="add(2)">Add</button>
+		<button @click="cut(-2)">Cut</button>
 		<button @click="cutRoot">Cut Root</button>
-		<div>{{length}}</div>
+		<div>length: {{length}}</div>
 		<hr>
-		<button @click="addRoot">Add Root</button>
-		<div>{{rootCount}}</div>
+		<button @click="addRoot(2)">Add Root</button>
+		<div>rootCount: {{rootCount}}</div>
 		<hr>
-		<button @click="addTest">Add Root</button>
+		<button @click="addTest(3)">Add Root</button>
 	</div>
 </template>
 
 <script>
+    import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
+
     export default {
         name: 'App',
         computed: {
-            count() {
-                return this.$store.state.my.count;
-            },
-            length() {
-                return this.$store.getters["my/length"];
-            },
-            rootCount() {
-                return this.$store.getters["my/rootCount"];
-            }
+            ...mapState({
+                count: state => state.my.count
+            }),
+            ...mapGetters({
+                length: "my/length",
+                rootCount: "my/rootCount"
+            }),
         },
         methods: {
-            add() {
-                this.$store.commit("my/add", 2);
-            },
-            cut() {
-                this.$store.dispatch("my/cut", {
-                    count: -2
-                });
-            },
-            cutRoot() {
-                this.$store.dispatch("my/cutRoot");
-            },
-            addRoot() {
-                this.$store.commit("add", 2);
-            },
-            addTest() {
-                this.$store.dispatch("my/addRoot", 3);
-            }
+            ...mapMutations({
+                add: "my/add",
+                addRoot: "add",
+            }),
+            ...mapActions({
+                cut: "my/cut",
+                cutRoot: "my/cutRoot",
+                addTest: "my/addRoot"
+            }),
         }
     }
 </script>
