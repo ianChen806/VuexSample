@@ -15,6 +15,10 @@
 
 <script>
     import {createNamespacedHelpers} from "vuex"
+    import {MyAdd, RootAdd} from "./MutationTypes";
+    import {MyLength, MyRootCount} from "./GetterTypes";
+    import {MyAddRoot, MyCut, MyCutRoot} from "./ActionTypes";
+    import {MyCount} from "./StateTypes";
 
     const {mapState, mapMutations, mapGetters, mapActions} = createNamespacedHelpers("my");
 
@@ -22,24 +26,24 @@
         name: 'App',
         computed: {
             ...mapState({
-                count: state => state.count
+                count: MyCount
             }),
             ...mapGetters({
-                length: "length",
-                rootCount: "rootCount"
+                length: MyLength,
+                rootCount: MyRootCount
             }),
         },
         methods: {
             addRoot(payload) {
-                this.$store.commit("add", payload);
+                this.$store.commit(RootAdd, payload);
             },
             ...mapMutations({
-                add: "add",
+                add: MyAdd,
             }),
             ...mapActions({
-                cut: "cut",
-                cutRoot: "cutRoot",
-                addTest: "addRoot"
+                cut: MyCut,
+                cutRoot: MyCutRoot,
+                addTest: MyAddRoot
             }),
         }
     }

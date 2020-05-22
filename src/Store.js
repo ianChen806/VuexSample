@@ -1,35 +1,39 @@
 import Vuex, {Store} from "vuex";
 import Vue from "vue";
+import {MyAdd, RootAdd} from "./MutationTypes";
+import {MyAddRoot, MyCut, MyCutRoot} from "./ActionTypes";
+import {MyCount, MyName, RootCount} from "./StateTypes";
+import {MyLength, MyRootCount} from "./GetterTypes";
 
 Vue.use(Vuex);
 
 const myStore = {
     namespaced: true,
     state: {
-        count: 0,
-        name: "Test",
+        [MyCount]: 0,
+        [MyName]: "Test",
     },
     mutations: {
-        add(state, payload) {
+        [MyAdd](state, payload) {
             state.count += payload;
         }
     },
     actions: {
-        cut(context, payload) {
+        [MyCut](context, payload) {
             context.commit("add", payload);
         },
-        cutRoot(context) {
+        [MyCutRoot](context) {
             context.commit("add", -context.rootState.rootCount);
         },
-        addRoot(context) {
+        [MyAddRoot](context) {
             context.commit("add", 3, {root: true});
         }
     },
     getters: {
-        length(state) {
+        [MyLength](state) {
             return state.name.length;
         },
-        rootCount(state, getters, rootState) {
+        [MyRootCount](state, getters, rootState) {
             return rootState.rootCount;
         },
     }
@@ -40,10 +44,10 @@ const store = new Store({
         my: myStore
     },
     state: {
-        rootCount: 0
+        [RootCount]: 0
     },
     mutations: {
-        add(state, payload) {
+        [RootAdd](state, payload) {
             state.rootCount += payload;
         }
     },
