@@ -8,8 +8,6 @@
 </template>
 
 <script>
-    import {mapActions} from "vuex";
-
     export default {
         name: 'App',
         computed: {
@@ -24,9 +22,6 @@
             add() {
                 this.$store.commit("my/add", 2);
             },
-            ...mapActions({
-                cutAction: "my/cut"
-            }),
             cut() {
                 this.$store.dispatch("my/cut", {
                     count: -2
