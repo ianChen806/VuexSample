@@ -8,31 +8,29 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters, mapState} from "vuex";
+    import {mapActions} from "vuex";
 
     export default {
         name: 'App',
         computed: {
-            ...mapState({
-                count: 'count'
-            }),
-            ...mapGetters({
-                length: 'length',
-                test: 'test',
-                func: 'func',
-            }),
+            count() {
+                return this.$store.state.my.count;
+            },
+            length() {
+                return this.$store.getters["my/length"];
+            },
         },
         methods: {
             add() {
-                this.$store.commit("add", {
-                    count: 2
-                });
+                this.$store.commit("my/add", 2);
             },
             ...mapActions({
-                cutAction: "cut"
+                cutAction: "my/cut"
             }),
             cut() {
-                this.cutAction({count: -2});
+                this.$store.dispatch("my/cut", {
+                    count: -2
+                });
             }
         }
     }

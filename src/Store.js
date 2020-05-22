@@ -4,22 +4,24 @@ import Vue from "vue";
 Vue.use(Vuex);
 
 const myStore = {
+    namespaced: true,
     state: {
-        myCount: 0
+        count: 0,
+        name:"Test",
     },
     mutations: {
         add(state, payload) {
-            state.myCount += payload;
+            state.count += payload;
         }
     },
     actions: {
-        cut({commit, rootState}) {
-            commit("add", rootState.count);
+        cut(context, payload) {
+            context.commit("add", payload.count);
         }
     },
     getters: {
-        test({rootState}) {
-            return rootState.count;
+        length(state) {
+            return state.name.length;
         }
     }
 }
@@ -28,30 +30,6 @@ const store = new Store({
     modules: {
         my: myStore
     },
-    state: {
-        count: 0
-    },
-    mutations: {
-        add(state, payload) {
-            state.count += payload.count;
-        }
-    },
-    getters: {
-        length(state, getters) {
-            return state.count + getters.test + getters.func(0) + 100;
-        },
-        test(state) {
-            return state.count + 5;
-        },
-        func() {
-            return (value) => value + 50;
-        }
-    },
-    actions: {
-        cut({commit}, payload) {
-            commit("add", {count: payload.count});
-        }
-    }
 });
 
 export default store;
