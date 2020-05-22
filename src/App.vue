@@ -3,7 +3,13 @@
 		<div>count: {{count}}</div>
 		<button @click="add">Add</button>
 		<button @click="cut">Cut</button>
+		<button @click="cutRoot">Cut Root</button>
 		<div>{{length}}</div>
+		<hr>
+		<button @click="addRoot">Add Root</button>
+		<div>{{rootCount}}</div>
+		<hr>
+		<button @click="addTest">Add Root</button>
 	</div>
 </template>
 
@@ -17,6 +23,9 @@
             length() {
                 return this.$store.getters["my/length"];
             },
+            rootCount() {
+                return this.$store.getters["my/rootCount"];
+            }
         },
         methods: {
             add() {
@@ -26,6 +35,15 @@
                 this.$store.dispatch("my/cut", {
                     count: -2
                 });
+            },
+            cutRoot() {
+                this.$store.dispatch("my/cutRoot");
+            },
+            addRoot() {
+                this.$store.commit("add", 2);
+            },
+            addTest() {
+                this.$store.dispatch("my/addRoot", 3);
             }
         }
     }
