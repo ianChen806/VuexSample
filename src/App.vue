@@ -22,20 +22,22 @@
             ...mapState({
                 count: state => state.my.count
             }),
-            ...mapGetters({
-                length: "my/length",
-                rootCount: "my/rootCount"
+            ...mapGetters("my", {
+                length: "length",
+                rootCount: "rootCount"
             }),
         },
         methods: {
+            ...mapMutations("my", {
+                add: "add",
+            }),
             ...mapMutations({
-                add: "my/add",
                 addRoot: "add",
             }),
-            ...mapActions({
-                cut: "my/cut",
-                cutRoot: "my/cutRoot",
-                addTest: "my/addRoot"
+            ...mapActions("my", {
+                cut: "cut",
+                cutRoot: "cutRoot",
+                addTest: "addRoot"
             }),
         }
     }
